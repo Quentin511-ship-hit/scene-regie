@@ -1,0 +1,17 @@
+{
+  "name": "SCÈNE — Régie Spectacle",
+  "short_name": "SCÈNE",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f3f5f8",
+  "theme_color": "#f5f6f8",
+  "description": "Régie audio locale pour spectacles",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

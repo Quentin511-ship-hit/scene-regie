@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f6f8">
+  <meta name="description" content="SCÈNE — Régie spectacle audio hors ligne">
+  <title>SCÈNE — Régie Spectacle</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><div class="brandmark">S</div><div><strong>SCÈNE</strong><small>RÉGIE SPECTACLE</small></div></div>
+    <div class="top-actions"><span id="offlineBadge" class="status">● Prêt</span><button id="installBtn" class="secondary" hidden>Installer l’application</button></div>
+  </header>
+  <main>
+    <section class="hero">
+      <div><p class="eyebrow">CONSOLE AUDIO</p><h1>Votre spectacle,<br><span>à portée de GO.</span></h1><p class="sub">Bibliothèque locale, conduite de lecture et effets sonores.</p></div>
+      <div class="hero-chip"><span class="pulse"></span> AUDIO LOCAL · MODE HORS LIGNE</div>
+    </section>
+
+    <section class="transport panel">
+      <div class="now-playing"><div class="cover">♫</div><div class="track-meta"><small>EN LECTURE</small><strong id="nowTitle">Aucune piste sélectionnée</strong><span id="nowSub">Ajoutez des fichiers audio pour commencer</span></div></div>
+      <div class="transport-controls">
+        <button id="prevBtn" class="control secondary" title="Piste précédente">|◀</button>
+        <button id="goBtn" class="go">GO <small>LECTURE / SUIVANT</small></button>
+        <button id="pauseBtn" class="control secondary" title="Pause">Ⅱ</button>
+        <button id="stopBtn" class="control secondary" title="Stop">■</button>
+        <button id="panicBtn" class="panic">PANIC</button>
+      </div>
+      <div class="progress-row"><span id="elapsed">00:00</span><div class="progress"><div id="progressFill"></div></div><span id="duration">00:00</span></div>
+    </section>
+
+    <div class="workspace">
+      <section class="panel library">
+        <div class="section-head"><div><p class="eyebrow">VOTRE CONTENU</p><h2>Bibliothèque</h2></div><label class="add-btn">＋ Importer des sons<input id="fileInput" type="file" accept="audio/*,.mp3,.wav,.ogg,.m4a,.aac,.flac" multiple hidden></label></div>
+        <input id="searchInput" class="search" type="search" placeholder="Rechercher un fichier…">
+        <div class="tabs"><button class="tab active" data-tab="music">Tous les sons</button><button class="tab" data-tab="effects">Effets</button></div>
+        <div id="libraryList" class="track-list empty">Importez des fichiers audio depuis votre Chromebook.</div>
+        <div class="footnote">Les fichiers restent dans le stockage local de ce navigateur.</div>
+      </section>
+
+      <section class="panel playlist-panel">
+        <div class="section-head"><div><p class="eyebrow">CONDUITE</p><h2>Liste de lecture</h2></div><button id="clearQueueBtn" class="text-btn">Vider</button></div>
+        <div class="queue-tools"><button id="addSelectedBtn" class="secondary">＋ Ajouter la sélection</button><label class="checkline"><input id="autoAdvance" type="checkbox"> Enchaînement auto</label></div>
+        <div id="queueList" class="queue-list empty">Votre conduite est vide. Ajoutez-y des pistes depuis la bibliothèque.</div>
+        <div class="fade-setting"><div><strong>Fondu enchaîné</strong><small>Durée entre deux pistes</small></div><div class="range-wrap"><input id="fadeRange" type="range" min="0" max="15" step=".5" value="5"><b><span id="fadeValue">5</span> s</b></div></div>
+      </section>
+    </div>
+
+    <section class="panel soundboard">
+      <div class="section-head"><div><p class="eyebrow">DÉCLENCHEMENT RAPIDE</p><h2>Soundboard · Effets</h2></div><span class="muted">Plusieurs effets peuvent jouer ensemble</span></div>
+      <div id="soundboardGrid" class="sound-grid"><div class="empty">Marquez des sons comme « Effet » dans la bibliothèque pour créer vos boutons.</div></div>
+    </section>
+
+    <section class="panel master">
+      <div><p class="eyebrow">SORTIE PRINCIPALE</p><h2>Master</h2><small class="muted">Sortie audio du Chromebook</small></div>
+      <div class="master-control"><span>−</span><input id="masterRange" type="range" min="0" max="100" value="85"><span>＋</span><strong id="masterValue">85%</strong></div>
+      <div class="meter"><i id="meterBar"></i></div>
+    </section>
+    <footer>SCÈNE · Prototype Chromebook · Les fichiers audio ne sont envoyés sur aucun serveur.</footer>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
